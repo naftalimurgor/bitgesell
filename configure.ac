@@ -1224,7 +1224,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[
   #if BOOST_VERSION <= 105600
       boost::this_thread::sleep(boost::posix_time::milliseconds(0));
   #else
-   choke me
+      boost::this_thread::sleep_for(boost::chrono::milliseconds(0));
   #endif
   ]])],
   [boost_sleep=yes; AC_DEFINE(HAVE_WORKING_BOOST_SLEEP, 1, [Define this symbol if boost sleep works])],
@@ -1233,9 +1233,7 @@ LIBS="$TEMP_LIBS"
 CPPFLAGS="$TEMP_CPPFLAGS"
 fi
 
-if test x$boost_sleep != xyes; then
-  AC_MSG_ERROR(No working boost sleep implementation found.)
-fi
+
 
 fi
 

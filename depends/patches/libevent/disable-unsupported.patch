@@ -1,0 +1,12 @@
+--- a/evutil.c
++++ b/evutil.c
+@@ -... +...
++#if !defined(__ANDROID__)
+ int evutil_check_ifaddrs(void) {
+     // original code
+ }
++#else
++int evutil_check_ifaddrs(void) {
++    return 0; // Stub for Android
++}
++#endif

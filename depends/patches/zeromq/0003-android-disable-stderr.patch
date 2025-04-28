@@ -1,0 +1,36 @@
+diff --git a/src/ctx.cpp b/src/ctx.cpp
+index 28c4c89..abcd123 100644
+--- a/src/ctx.cpp
++++ b/src/ctx.cpp
+@@ -432,7 +432,9 @@ void zmq::ctx_t::start ()
+ void zmq::ctx_t::terminate ()
+ {
+-    fprintf (stderr, "ZMQ: ctx terminated with active sockets\n");
++    // Disabled stderr for Android cross-compile
++    (void)0;
+     // Rest of function...
+ }
+diff --git a/src/ipc_address.cpp b/src/ipc_address.cpp
+index 13a9cb3..def4567 100644
+--- a/src/ipc_address.cpp
++++ b/src/ipc_address.cpp
+@@ -78,7 +78,9 @@ int zmq::ipc_address_t::resolve (const char *name_, bool ipv6_)
+     if (rc == -1) {
+-        fprintf (stderr, "ZMQ: Unable to resolve IPC name %s\n", name_);
++        // Disabled stderr for Android cross-compile
++        (void)0;
+     }
+     return 0;
+ }
+diff --git a/src/ip_resolver.cpp b/src/ip_resolver.cpp
+index 2bde233..bca7890 100644
+--- a/src/ip_resolver.cpp
++++ b/src/ip_resolver.cpp
+@@ -97,7 +97,9 @@ int zmq::ip_resolver_t::resolve_nic_name (const char *nic_)
+     if (rc == -1) {
+-        fprintf (stderr, "ZMQ: Unable to resolve NIC name %s\n", nic_);
++        // Disabled stderr for Android cross-compile
++        (void)0;
+     }
+     return 0;
+ }

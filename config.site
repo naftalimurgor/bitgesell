@@ -1,0 +1,6 @@
+ac_cv_func_getifaddrs=no
+ac_cv_func_freeifaddrs=no
+ac_cv_func_inet_pton=no
+ac_cv_func_getaddrinfo=no
+ac_cv_header_ifaddrs_h=no
+ac_cv_header_netinet_in_h=no

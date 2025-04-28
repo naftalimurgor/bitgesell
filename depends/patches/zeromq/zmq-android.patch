@@ -1,0 +1,12 @@
+diff --git a/src/ctx.cpp b/src/ctx.cpp
+index f7689cf..1234567 100644
+--- a/src/ctx.cpp
++++ b/src/ctx.cpp
+@@ -50,7 +50,9 @@ void zmq_abort (const char *errmsg_)
+ {
+-    fprintf (stderr, "Aborted: %s\n", errmsg_);
++    #ifndef __ANDROID__
++    fprintf (stderr, "Aborted: %s\n", errmsg_);
++    #endif
+     abort ();
+ }

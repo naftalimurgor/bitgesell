@@ -112,6 +112,7 @@ AC_DEFUN([_AX_BOOST_BASE_RUNDETECT],[
     dnl The last entry in the list is chosen by default when no libraries
     dnl are found, e.g. when only header-only libraries are installed!
     AS_CASE([${host_cpu}],
+      [aarch64],[multiarch_libsubdir="lib/aarch64-linux-android"],
       [x86_64],[libsubdirs="lib64 libx32 lib lib64"],
       [mips*64*],[libsubdirs="lib64 lib32 lib lib64"],
       [ppc64|powerpc64|s390x|sparc64|aarch64|ppc64le|powerpc64le|riscv64],[libsubdirs="lib64 lib lib64"],
@@ -122,6 +123,7 @@ AC_DEFUN([_AX_BOOST_BASE_RUNDETECT],[
     dnl them priority over the other paths since, if libs are found there, they
     dnl are almost assuredly the ones desired.
     AS_CASE([${host_cpu}],
+      [aarch64],[multiarch_libsubdir="lib/aarch64-linux-android"],
       [i?86],[multiarch_libsubdir="lib/i386-${host_os}"],
       [multiarch_libsubdir="lib/${host_cpu}-${host_os}"]
     )

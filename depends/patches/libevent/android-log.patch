@@ -1,0 +1,12 @@
+--- a/log.c
++++ b/log.c
+@@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
++
++#ifdef __ANDROID__
++#include <android/log.h>
++#undef fprintf
++#define fprintf(stream, ...) __android_log_print(ANDROID_LOG_ERROR, "libevent", __VA_ARGS__)
++#endif

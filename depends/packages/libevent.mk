@@ -13,11 +13,14 @@ define $(package)_set_vars
   $(package)_config_opts += --disable-dependency-tracking --enable-option-checking
   $(package)_config_opts_release=--disable-debug-mode
   $(package)_config_opts_linux=--with-pic
-  $(package)_config_opts_android=--with-pic
+  $(package)_config_opts_android=--with-pic \
+    ac_cv_func_getifaddrs=no ac_cv_func_clock_gettime=yes
+  $(package)_cflags_android=-D__ANDROID_API__=21
+  $(package)_cxxflags_android=-D__ANDROID_API__=21
 endef
 
 define $(package)_config_cmds
-  $($(package)_autoconf)
+  CFLAGS="$($(package)_cflags_android)" CXXFLAGS="$($(package)_cxxflags_android)" $($(package)_autoconf)
 endef
 
 define $(package)_build_cmds
